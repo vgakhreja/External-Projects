@@ -10,8 +10,8 @@ def pipeline(spark: SparkSession) -> None:
     df_Orders = Orders(spark)
     df_Source1724756344529 = Source1724756344529(spark)
     df_By_CustomerId = By_CustomerId(spark, df_Orders, df_Source1724756344529)
-    df_Cleanup = Cleanup(spark, df_By_CustomerId)
-    df_Sum_Amounts = Sum_Amounts(spark, df_Cleanup)
+    df_custom_reformat = custom_reformat(spark, df_By_CustomerId)
+    df_Sum_Amounts = Sum_Amounts(spark, df_custom_reformat)
     Customer_Orders(spark, df_Sum_Amounts)
 
 def main():
