@@ -1,0 +1,366 @@
+name: HelloWorld
+description: ''
+version: v3.3.10.0
+author: null
+language: python
+buildSystem: ''
+buildSystemDetails:
+  artefactID: helloworld
+  parentArtefactID: abhishekse2etestsprophecyioteam
+  buildSystem: wheel
+  author: null
+  createdAt: '2024-08-06 04:54:17'
+pipelines:
+  pipelines/customers_orders:
+    name: customers_orders
+    description: Aggregates total spending's for each customer
+    author: abhisheks+e2etests@prophecy.io
+    mode: batch
+    artefactID: ''
+    language: python
+    createdAt: '2024-08-06 04:54:18'
+    datasets:
+      inputs:
+      - datasets/customers
+      - datasets/orders
+      outputs:
+      - datasets/customers_orders
+    subgraphs: []
+    dependencies: {}
+  pipelines/report_top_customers:
+    name: report_top_customers
+    description: Prepare a report based on customers' spending
+    author: abhisheks+e2etests@prophecy.io
+    mode: batch
+    artefactID: ''
+    language: python
+    createdAt: '2024-08-06 04:54:18'
+    datasets:
+      inputs:
+      - datasets/customers_orders
+      outputs:
+      - datasets/report
+    subgraphs: []
+    dependencies: {}
+  pipelines/join_agg_sort:
+    name: join_agg_sort
+    description: Show an example of joining two datasets (customers and orders), aggregating
+      (sales by customer), sorting (by totals)
+    author: abhisheks+e2etests@prophecy.io
+    mode: batch
+    artefactID: ''
+    language: python
+    createdAt: '2024-08-06 04:54:18'
+    datasets:
+      inputs:
+      - datasets/customers
+      - datasets/orders
+      outputs:
+      - datasets/customer_totals
+    subgraphs: []
+    dependencies: {}
+  pipelines/farmers-markets-irs:
+    name: farmers-markets-irs
+    description: Exploration of Farmer's Market Locations By US Zip Code
+    author: abhisheks+e2etests@prophecy.io
+    mode: batch
+    artefactID: ''
+    language: python
+    createdAt: '2024-08-06 04:54:19'
+    datasets:
+      inputs:
+      - datasets/farmers-markets
+      - datasets/irs-zipcode-data
+      outputs:
+      - datasets/farmers_market_tax_report
+    subgraphs: []
+    dependencies: {}
+  pipelines/json-read:
+    name: json-read
+    description: json-read
+    author: abhisheks+e2etests@prophecy.io
+    mode: batch
+    artefactID: ''
+    language: python
+    createdAt: '2024-08-20 08:48:20'
+    datasets:
+      inputs:
+      - datasets/old_events
+      outputs:
+      - datasets/historic_events_flat
+    subgraphs: []
+    dependencies: {}
+datasets:
+  datasets/report:
+    name: report
+    description: Final report for the bank
+    author: abhisheks+e2etests@prophecy.io
+    createdAt: '2024-08-06 04:54:17'
+    mode: batch
+    physicalDatasets:
+      dev:
+        fabricId: 3
+        datasetType: File
+        description: ''
+        author: abhisheks+e2etests@prophecy.io
+        createdAt: '2024-08-06 04:54:17'
+  datasets/customer_totals:
+    name: customer_totals
+    description: Customers by total of their purchases
+    author: abhisheks+e2etests@prophecy.io
+    createdAt: '2024-08-06 04:54:17'
+    mode: batch
+    physicalDatasets:
+      dev:
+        fabricId: 3
+        datasetType: File
+        description: ''
+        author: abhisheks+e2etests@prophecy.io
+        createdAt: '2024-08-06 04:54:17'
+  datasets/orders:
+    name: orders
+    description: All the orders placed by the customers
+    author: abhisheks+e2etests@prophecy.io
+    createdAt: '2024-08-06 04:54:17'
+    mode: batch
+    physicalDatasets:
+      dev:
+        fabricId: 3
+        datasetType: File
+        description: ''
+        author: abhisheks+e2etests@prophecy.io
+        createdAt: '2024-08-06 04:54:17'
+  datasets/customers:
+    name: customers
+    description: All the customers
+    author: abhisheks+e2etests@prophecy.io
+    createdAt: '2024-08-06 04:54:17'
+    mode: batch
+    physicalDatasets:
+      dev:
+        fabricId: 3
+        datasetType: File
+        description: ''
+        author: abhisheks+e2etests@prophecy.io
+        createdAt: '2024-08-06 04:54:17'
+  datasets/customers_orders:
+    name: customers_orders
+    description: Customers by total of their purchases
+    author: abhisheks+e2etests@prophecy.io
+    createdAt: '2024-08-06 04:54:17'
+    mode: batch
+    physicalDatasets:
+      dev:
+        fabricId: 3
+        datasetType: File
+        description: ''
+        author: abhisheks+e2etests@prophecy.io
+        createdAt: '2024-08-06 04:54:17'
+  datasets/old_events:
+    name: old_events
+    description: Old events data
+    author: abhisheks+e2etests@prophecy.io
+    createdAt: '2024-08-06 04:54:18'
+    mode: batch
+    physicalDatasets:
+      dev:
+        fabricId: 3
+        datasetType: File
+        description: ''
+        author: abhisheks+e2etests@prophecy.io
+        createdAt: '2024-08-06 04:54:18'
+  datasets/historic_events_flat:
+    name: historic_events_flat
+    description: Historic events flat
+    author: abhisheks+e2etests@prophecy.io
+    createdAt: '2024-08-06 04:54:18'
+    mode: batch
+    physicalDatasets:
+      dev:
+        fabricId: 3
+        datasetType: File
+        description: ''
+        author: abhisheks+e2etests@prophecy.io
+        createdAt: '2024-08-06 04:54:18'
+  datasets/farmers-markets:
+    name: farmers-markets
+    description: Farmer's Market data
+    author: abhisheks+e2etests@prophecy.io
+    createdAt: '2024-08-06 04:54:18'
+    mode: batch
+    physicalDatasets:
+      dev:
+        fabricId: 3
+        datasetType: File
+        description: ''
+        author: abhisheks+e2etests@prophecy.io
+        createdAt: '2024-08-06 04:54:18'
+  datasets/irs-zipcode-data:
+    name: irs-zipcode-data
+    description: Irs zipcode data
+    author: abhisheks+e2etests@prophecy.io
+    createdAt: '2024-08-06 04:54:18'
+    mode: batch
+    physicalDatasets:
+      dev:
+        fabricId: 3
+        datasetType: File
+        description: ''
+        author: abhisheks+e2etests@prophecy.io
+        createdAt: '2024-08-06 04:54:18'
+  datasets/farmers_market_tax_report:
+    name: farmers_market_tax_report
+    description: Farmer's market tax report
+    author: abhisheks+e2etests@prophecy.io
+    createdAt: '2024-08-06 04:54:18'
+    mode: batch
+    physicalDatasets:
+      dev:
+        fabricId: 3
+        datasetType: File
+        description: ''
+        author: abhisheks+e2etests@prophecy.io
+        createdAt: '2024-08-06 04:54:18'
+templates: {}
+jobs:
+  jobs/Automation-Schedule-SingleJob:
+    name: Automation-Schedule-SingleJob
+    description: ''
+    fabricUID: 523
+    scheduler:
+      Databricks: {}
+    cloudProvider: null
+    jobSize: adv-json2
+    scheduleCron: 0 0 0 1/1 * ? 2090
+    timeout: null
+    alerting:
+      emails: abhisheks+e2etests@prophecy.io
+      onStart: true
+      onSuccess: false
+      onFailure: true
+    pipelines:
+    - pipelines/join_agg_sort
+    - pipelines/report_top_customers
+    jobClusterMode:
+      clusterMode:
+        Single: {}
+      clusterId: null
+    enabled: false
+    createdAt: '2024-08-27 16:04:33'
+    author: abhisheks+e2etests@prophecy.io
+    models: []
+    sqlProjects: []
+  jobs/Duplicate_Automation-Schedule-Single1:
+    name: Duplicate_Automation-Schedule-Single1
+    description: ''
+    fabricUID: 523
+    scheduler:
+      Databricks: {}
+    cloudProvider: null
+    jobSize: adv-json2
+    scheduleCron: 0 0 0 1/1 * ? 2090
+    timeout: null
+    alerting:
+      emails: abhisheks+e2etests@prophecy.io
+      onStart: true
+      onSuccess: false
+      onFailure: true
+    pipelines: []
+    jobClusterMode:
+      clusterMode:
+        Single: {}
+      clusterId: null
+    enabled: false
+    createdAt: '2024-08-27 16:09:27'
+    author: abhisheks+e2etests@prophecy.io
+    models: []
+    sqlProjects: []
+  jobs/Automation-Schedule-JobRunInteractive:
+    name: Automation-Schedule-JobRunInteractive
+    description: ''
+    fabricUID: 3
+    scheduler:
+      Databricks: {}
+    cloudProvider: null
+    jobSize: small
+    scheduleCron: 0 0 0 1/1 * ? 2090
+    timeout: null
+    alerting:
+      emails: abhisheks+e2etests@prophecy.io
+      onStart: true
+      onSuccess: false
+      onFailure: true
+    pipelines:
+    - pipelines/join_agg_sort
+    jobClusterMode:
+      clusterMode:
+        Multi: {}
+      clusterId: null
+    enabled: false
+    createdAt: '2024-08-30 05:31:33'
+    author: abhisheks+e2etests@prophecy.io
+    models: []
+    sqlProjects: []
+gemContainer:
+  languageVersion: '3.10'
+  gemLibsVersion: 1.3.4.0
+  gems: {}
+  dependencies: null
+functions:
+  author: null
+  createdAt: '2024-08-06 04:54:17'
+  udfs: {}
+  udafs: {}
+  expressions: {}
+  airflowFunctions: {}
+  businessRules: {}
+subgraphs: {}
+sqlModels: {}
+sqlSnapshots: {}
+sqlTests: {}
+sqlMacros: {}
+sqlSeeds: {}
+sqlSources: {}
+sqlUnreferencedSources: {}
+sqlPipeline: null
+dependencies:
+- type: plibMaven
+  modifiedAt: '2024-08-20T08:48:23.945391Z'
+  name: plibMaven
+  version: 8.2.0-SNAPSHOT
+  id: '1369066395'
+  createdAt: '2024-08-20T08:48:23.945353Z'
+  enabled: true
+  entity: Project
+- type: plibPypi
+  modifiedAt: '2024-09-03T02:52:14.078Z'
+  name: ProphecyLibsPython
+  version: 1.9.16
+  id: '1795572050'
+  createdAt: '2024-08-20T08:48:23.945432Z'
+  enabled: true
+  entity: Project
+  description: Default dependency for Prophecy Libs
+  scope: Project
+  editable: true
+  __path: '[0]'
+projectDependencies:
+  '4':
+    projectUID: 4
+    projectName: ProphecySparkBasicsPython
+    repositoryPath: gitUri=http://gitserver:3000/QDtqmciq_team_2/QDtqmciq_project_4.git&subPath=
+    version: 0.2.28
+    isDefault: true
+    author: null
+    createdAt: '2024-09-03 02:53:16'
+  '5':
+    projectUID: 5
+    projectName: ProphecyWarehousePython
+    repositoryPath: gitUri=http://gitserver:3000/QDtqmciq_team_2/QDtqmciq_project_5.git&subPath=
+    version: 0.0.8
+    isDefault: true
+    author: null
+    createdAt: '2024-08-06 04:54:20'
+flags:
+  shouldAddDefaultDependenciesIfAbsent: true
+pipelineConfigurations: {}

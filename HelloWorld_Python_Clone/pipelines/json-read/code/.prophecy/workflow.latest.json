@@ -1,0 +1,370 @@
+{
+  "metainfo" : {
+    "migrationVersions" : {
+      "gemBuilderVersion" : "v1"
+    },
+    "functions" : { },
+    "codeGenConfiguration" : {
+      "editableConfig" : true,
+      "plibVersion" : {
+        "mavenVersion" : "8.2.0-SNAPSHOT",
+        "pyPiVersion" : "1.9.16"
+      }
+    },
+    "id" : "1",
+    "uri" : "pipelines/json-read",
+    "pipelineSettingsInfo" : {
+      "applicationName" : "json-read",
+      "hasApplication" : true,
+      "isFunctionsPackageDirDefined" : true
+    },
+    "language" : "python",
+    "fabricId" : "3",
+    "frontEndLanguage" : "sql",
+    "mode" : "batch",
+    "udfs" : {
+      "language" : "python",
+      "udfs" : [ ],
+      "functionPackageName" : "abhishekse2etestsprophecyioteam.helloworld.functions",
+      "sharedFunctionPackageNames" : [ "prophecy.warehouse.functions", "prophecy.spark_basic.functions" ]
+    },
+    "udafs" : {
+      "language" : "python",
+      "code" : ""
+    },
+    "configuration" : {
+      "common" : {
+        "type" : "record",
+        "fields" : [ ]
+      },
+      "oldCommon" : {
+        "type" : "record",
+        "fields" : [ ]
+      },
+      "fabrics" : { },
+      "instances" : { },
+      "selected" : "default",
+      "nonEditable" : [ ],
+      "isSubscribedPipelineWithPipelineConfigs" : false
+    },
+    "sparkConf" : [ ],
+    "hadoopConf" : [ ],
+    "codeMode" : "sparse",
+    "buildSystem" : "maven",
+    "externalDependencies" : [ ],
+    "dependentProjectExternalDependencies" : [ {
+      "projectUID" : "5",
+      "projectName" : "ProphecyWarehousePython",
+      "externalDependencies" : [ ]
+    }, {
+      "projectUID" : "4",
+      "projectName" : "ProphecySparkBasicsPython",
+      "externalDependencies" : [ ]
+    } ],
+    "isImported" : false,
+    "interimMode" : "Full",
+    "interimModeEnabled" : true,
+    "visualCodeInterimMode" : "Disabled",
+    "recordsLimit" : {
+      "enabled" : false,
+      "value" : 1000
+    },
+    "topLevelPackage" : "jsonread",
+    "configurationVersion" : "v2"
+  },
+  "connections" : [ {
+    "id" : "_WqGoxTZ_q4pjUs9b2gPt",
+    "source" : "72PDvdAxyhHKXYzedsXZ_$$4LxkMC_QcA_TYy70ZWupQ",
+    "sourcePort" : "y1exAhb-hIJQN5AG7LnXw$$-4nr1GT6ArL-WFGS_pm6b",
+    "target" : "q8IEWMsNYtVRw5dtB1cyn$$3DfZu2N64SMaw--7fJ1-d",
+    "targetPort" : "_oQ5M4R4kzDp0TzJULBjF$$8rNw7EOG50K_6Df68Ixb6"
+  }, {
+    "id" : "COyryuOx4bjH0_HvPgSjv",
+    "source" : "q8IEWMsNYtVRw5dtB1cyn$$3DfZu2N64SMaw--7fJ1-d",
+    "sourcePort" : "Km2ylPTq79ZWJOokTHaQ_$$JuC3K8hyG71RfgFo0YsDW",
+    "target" : "Odwpat86bJiLwPhmUUhaa$$-cP4vhucc_LNXiP2J3xLk",
+    "targetPort" : "Bd6Wk_fwyAb9gyrOuAm9b$$ltfY-MM7RWanbIzv_Vkho"
+  } ],
+  "processes" : {
+    "72PDvdAxyhHKXYzedsXZ_$$4LxkMC_QcA_TYy70ZWupQ" : {
+      "id" : "72PDvdAxyhHKXYzedsXZ_$$4LxkMC_QcA_TYy70ZWupQ",
+      "component" : "Source",
+      "metadata" : {
+        "label" : "HistoricEvents",
+        "slug" : "HistoricEvents",
+        "x" : -500,
+        "y" : -180,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false,
+        "comment" : "Loads historical event data from a JSON file for analysis and reporting purposes.",
+        "autoUpdateComment" : true
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "y1exAhb-hIJQN5AG7LnXw$$-4nr1GT6ArL-WFGS_pm6b",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      },
+      "properties" : {
+        "datasetId" : "datasets/old_events"
+      }
+    },
+    "q8IEWMsNYtVRw5dtB1cyn$$3DfZu2N64SMaw--7fJ1-d" : {
+      "id" : "q8IEWMsNYtVRw5dtB1cyn$$3DfZu2N64SMaw--7fJ1-d",
+      "component" : "FlattenSchema",
+      "metadata" : {
+        "label" : "ExtractAsTable",
+        "slug" : "ExtractAsTable",
+        "x" : -360,
+        "y" : -180,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "_oQ5M4R4kzDp0TzJULBjF$$8rNw7EOG50K_6Df68Ixb6",
+          "slug" : "in0",
+          "schema" : {
+            "type" : "struct",
+            "fields" : [ {
+              "name" : "result",
+              "type" : {
+                "type" : "struct",
+                "fields" : [ {
+                  "name" : "count",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "events",
+                  "type" : {
+                    "type" : "array",
+                    "elementType" : {
+                      "type" : "struct",
+                      "fields" : [ {
+                        "name" : "category1",
+                        "type" : "string",
+                        "nullable" : true,
+                        "metadata" : {
+                          "description" : "",
+                          "mappings" : [ ],
+                          "tags" : [ ]
+                        }
+                      }, {
+                        "name" : "category2",
+                        "type" : "string",
+                        "nullable" : true,
+                        "metadata" : {
+                          "description" : "",
+                          "mappings" : [ ],
+                          "tags" : [ ]
+                        }
+                      }, {
+                        "name" : "date",
+                        "type" : "string",
+                        "nullable" : true,
+                        "metadata" : {
+                          "description" : "",
+                          "mappings" : [ ],
+                          "tags" : [ ]
+                        }
+                      }, {
+                        "name" : "description",
+                        "type" : "string",
+                        "nullable" : true,
+                        "metadata" : {
+                          "description" : "",
+                          "mappings" : [ ],
+                          "tags" : [ ]
+                        }
+                      }, {
+                        "name" : "granularity",
+                        "type" : "string",
+                        "nullable" : true,
+                        "metadata" : {
+                          "description" : "",
+                          "mappings" : [ ],
+                          "tags" : [ ]
+                        }
+                      }, {
+                        "name" : "lang",
+                        "type" : "string",
+                        "nullable" : true,
+                        "metadata" : {
+                          "description" : "",
+                          "mappings" : [ ],
+                          "tags" : [ ]
+                        }
+                      } ]
+                    },
+                    "containsNull" : true
+                  },
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                } ]
+              },
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            } ]
+          },
+          "isStreaming" : false
+        } ],
+        "outputs" : [ {
+          "id" : "Km2ylPTq79ZWJOokTHaQ_$$JuC3K8hyG71RfgFo0YsDW",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      },
+      "properties" : {
+        "explodedColsNewName" : [ {
+          "originalColToExplode" : "result.events",
+          "updatedColToExplode" : "result.events",
+          "colNameAfterExplode" : "result-events"
+        } ],
+        "fsExpressions" : [ {
+          "exploded" : "✓",
+          "flattenedExpression" : "result-events.category1",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "result.events.category1"
+          },
+          "targetTokens" : [ "result", "events", "category1" ],
+          "target" : "result-events-category1"
+        }, {
+          "exploded" : "✓",
+          "flattenedExpression" : "result-events.category2",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "result.events.category2"
+          },
+          "targetTokens" : [ "result", "events", "category2" ],
+          "target" : "result-events-category2"
+        }, {
+          "exploded" : "✓",
+          "flattenedExpression" : "result-events.date",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "result.events.date"
+          },
+          "targetTokens" : [ "result", "events", "date" ],
+          "target" : "result-events-date"
+        }, {
+          "exploded" : "✓",
+          "flattenedExpression" : "result-events.description",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "result.events.description"
+          },
+          "targetTokens" : [ "result", "events", "description" ],
+          "target" : "result-events-description"
+        } ],
+        "columnsSelector" : [ "_oQ5M4R4kzDp0TzJULBjF$$8rNw7EOG50K_6Df68Ixb6##result.events", "_oQ5M4R4kzDp0TzJULBjF$$8rNw7EOG50K_6Df68Ixb6##result", "_oQ5M4R4kzDp0TzJULBjF$$8rNw7EOG50K_6Df68Ixb6##result.events.category2", "_oQ5M4R4kzDp0TzJULBjF$$8rNw7EOG50K_6Df68Ixb6##result.events.category1", "_oQ5M4R4kzDp0TzJULBjF$$8rNw7EOG50K_6Df68Ixb6##result.events.description", "_oQ5M4R4kzDp0TzJULBjF$$8rNw7EOG50K_6Df68Ixb6##result.events.date" ],
+        "explodeColumns" : [ ],
+        "delimiter" : "-"
+      },
+      "componentInfo" : {
+        "gemId" : "gitUri=http://gitserver:3000/QDtqmciq_team_2/QDtqmciq_project_4.git&subPath=&tag=0.2.28&projectSubscriptionProjectId=4&path=gems/FlattenSchema",
+        "projectName" : "ProphecySparkBasicsPython"
+      }
+    },
+    "Odwpat86bJiLwPhmUUhaa$$-cP4vhucc_LNXiP2J3xLk" : {
+      "id" : "Odwpat86bJiLwPhmUUhaa$$-cP4vhucc_LNXiP2J3xLk",
+      "component" : "Target",
+      "metadata" : {
+        "label" : "WriteHistoric",
+        "slug" : "WriteHistoric",
+        "x" : -220,
+        "y" : -180,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false,
+        "comment" : "Stores historical event data in a JSON format for future analysis and reference.",
+        "autoUpdateComment" : true
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "Bd6Wk_fwyAb9gyrOuAm9b$$ltfY-MM7RWanbIzv_Vkho",
+          "slug" : "in0",
+          "schema" : {
+            "type" : "struct",
+            "fields" : [ {
+              "name" : "result-events-category1",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "result-events-category2",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "result-events-date",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "result-events-description",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            } ]
+          },
+          "isStreaming" : false
+        } ],
+        "outputs" : [ ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      },
+      "properties" : {
+        "datasetId" : "datasets/historic_events_flat"
+      }
+    }
+  },
+  "ports" : {
+    "inputs" : [ ],
+    "outputs" : [ ],
+    "selectedInputFields" : [ ],
+    "isCustomOutputSchema" : false,
+    "autoUpdateOnRun" : false
+  }
+}
